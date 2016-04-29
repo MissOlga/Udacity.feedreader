@@ -42,15 +42,20 @@ $(function() {
     //This test suite tests to make sure that a url has been defined and
     describe('URL is defined', function() {
         //the it functions loop through each feed in the allFeeds object and ensures it has a URL defined and that the URL is not empty.
-        allFeeds.forEach(function(allFeeds) {
-            it('URL is not empty', function() {
-                expect(allFeeds.url).toBeDefined();
-                expect(allFeeds.length).not.toBe(0);
-            });
+        it('URL is not empty', function() {
+          allFeeds.forEach(function(feed) {
+             expect(feed.url).not.toBe(null);
+             expect(feed.url).not.toBe(""); //this eliminates the possibility of an empty string.
+          });
             //This is a test that loops through each feed in the allFeeds object and ensures it has a name defined and that the name is not empty.
+        it('name is defined', function() {
+          allFeeds.forEach(function(feed) {
+             expect(feed.name).toBeDefined();
+          });
+        });
             it('name is not empty', function() {
-                expect(allFeeds.name).toBeDefined();
-                expect(allFeeds.length).not.toBe(0);
+              expect(feed.name).not.toBe(""); //this eliminates the possibility of an empty string.
+              expect(feed.name).not.toBe(null);
             });
         });
     });
@@ -75,8 +80,7 @@ $(function() {
         });
         it("has minimum 1 entry", function() {
             expect($('.feed .entry').length).toBeGreaterThan(0);
-            expect($('.entry').length).toBeGreaterThan(0);
-            });
+        });
     });
     //This test suite checks to see if test that when a new feed is loaded by the loadFeed function that the content actually changes.
     describe('New Feed Selection', function() {
@@ -92,7 +96,7 @@ $(function() {
         it('ensures the new feed is loaded and the content changes', function() {
             second = $('.feed').html();
             expect(first).not.toBe(second);
-            });
+        });
         afterAll(function(done) {
             loadFeed(0, done);
         });
