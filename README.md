@@ -2,7 +2,7 @@
 
 ## To run the project,
 1. Click on the index.html. 
-2. See all 13 specs passing the jasmine tests.
+2. See all 9 specs passing the jasmine tests.
 
 **RSS Feeds**
   * URL not undefined
