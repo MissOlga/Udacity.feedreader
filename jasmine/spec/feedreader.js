@@ -36,29 +36,37 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-    });
 
 
     //This test suite tests to make sure that a url has been defined and
-    describe('URL is defined', function() {
+
         //the it functions loop through each feed in the allFeeds object and ensures it has a URL defined and that the URL is not empty.
+        it('URL is defined', function() {
+          allFeeds.forEach(function(feed) {
+             expect(feed.url).toBeDefined();
+          });
+        });
         it('URL is not empty', function() {
           allFeeds.forEach(function(feed) {
              expect(feed.url).not.toBe(null);
              expect(feed.url).not.toBe(""); //this eliminates the possibility of an empty string.
           });
+        });
             //This is a test that loops through each feed in the allFeeds object and ensures it has a name defined and that the name is not empty.
         it('name is defined', function() {
           allFeeds.forEach(function(feed) {
              expect(feed.name).toBeDefined();
           });
         });
-            it('name is not empty', function() {
+        it('name is not empty', function() {
+            allFeeds.forEach(function(feed) {
               expect(feed.name).not.toBe(""); //this eliminates the possibility of an empty string.
               expect(feed.name).not.toBe(null);
-            });
+        }   );
         });
-    });
+ });
+
+
     //This test suite deals with the menu visibility
     describe('The menu', function() {
         //This test that ensures the menu element is hidden by default.
